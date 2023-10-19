@@ -1,5 +1,5 @@
 # SWEA 11779 응용 구현 06 그래프의 기본과 탐색 - 연산
-import sys; sys.stdin=open('swea11779_input.txt')
+# import sys; sys.stdin=open('swea11779_input.txt')
 from collections import deque
 def 함수(v):
     # 들어와서 방문체크
