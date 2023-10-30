@@ -3,6 +3,8 @@
 # 전공평점 = 전공과목별 (학점 x 과목평점) 의 합
 
 # 실패, 원인을 잘 모르겠다.
+# F 일때도 총점에 더해줘야 하는데 그거 안해서 틀렸음
+# 수정 후 성공
 
 # 과목의 수
 N = 20
@@ -55,7 +57,7 @@ for _ in range(N):
         total_grade += float(grade)
         
     if rating == 'F':
-        get_grade += 0
+        total_grade += float(grade)
     
     # P인 과목은 계산에서 제외
     if rating == 'P':
@@ -73,3 +75,26 @@ else:
 
 # 소숫점 6자리까지 표현.
 print(f'{avg_grade:.6f}')
+
+'''
+ObjectOrientedProgramming1 3.0 A+
+IntroductiontoComputerEngineering 3.0 A+
+ObjectOrientedProgramming2 3.0 A0
+CreativeComputerEngineeringDesign 3.0 A+
+AssemblyLanguage 3.0 F
+InternetProgramming 3.0 B0
+ApplicationProgramminginJava 3.0 A0
+SystemProgramming 3.0 B0
+OperatingSystem 3.0 B0
+WirelessCommunicationsandNetworking 3.0 C+
+LogicCircuits 3.0 B0
+DataStructure 4.0 A+
+MicroprocessorApplication 3.0 B+
+EmbeddedSoftware 3.0 C0
+ComputerSecurity 3.0 F
+Database 3.0 C+
+Algorithm 3.0 B0
+CapstoneDesigninCSE 3.0 F
+CompilerDesign 3.0 D0
+ProblemSolving 4.0 P
+'''
