@@ -11,11 +11,31 @@ music = list(map(int, input().split()))
 
 # 이 문제 sorted 사용하면 금방 풀리긴함.
 ans = ''
+
+# flag 사용
+flag_asc = 0
+flag_des = 0
+
 for i in range(len(music)-1):
+    # 1 2 3 4 5 6 7 8 일 때
     if music[i+1] == music[i] + 1:
-        ans = 'ascending'
+        flag_asc = 1
+    
+    # 8 7 6 5 4 3 2 1 일 때
     elif music[i+1] == music[i] - 1:
-        ans = 'descending'
+        flag_des = 1
+
+    # 이도저도 아닐 때
     else:
-        ans = 'mixed'
+        flag_asc = 0
+        flag_des = 0
+        break
+
+if flag_asc == 1 and flag_des == 0:
+    ans = 'ascending'
+elif flag_des == 1 and flag_asc == 0:
+    ans = 'descending'
+else:
+    ans = 'mixed'
+
 print(ans)
