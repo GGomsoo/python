@@ -5,21 +5,26 @@
 # 1. 길이가 짧은 것 부터
 # 2. 길이가 같다면 사전 순으로
 
-# N = int(input())
-# ans = []
+N = int(input())
+words = []
 
-# for _ in range(N):
-#     word = input()
-#     ans.append(word)
+for _ in range(N):
+    word = input()
+    words.append(word)
 
-# for i in range(len(ans)):
-#     for i in range(len(ans)-1):
-#         if len(ans[i]) > len(ans[i+1]):
-#             ans[i], ans[i+1] = ans[i+1], ans[i]
+# 중복 제거
+# 리스트 형태가 아닌 '{}' 형태
+set_words = set(words)
 
-#         # else: 
-#         #     if len(ans[i]) == len(ans[i+1]):
-#         #         if ord(ans[i][0]) > ord(ans[i+1][0]):
-#         #             ans[i], ans[i+1] = ans[i+1], ans[i]
+# 중복 제거한 객체를 다시 리스트화
+ans = list(set_words)
 
-print('다시 풀어봐야 해')
+# 사전 순서대로 정렬
+ans.sort()
+
+# 다시 길이순으로 정렬
+ans.sort(key=len)
+
+# ans내에 요소들 출력
+for word in ans:
+    print(word)
