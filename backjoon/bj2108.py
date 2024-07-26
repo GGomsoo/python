@@ -4,6 +4,7 @@
 # 최빈값 : N개의 수들 중 가장 많이 나타나는 값
 # 범위 : N개의 수들 중 최댓값과 최솟값의 차이
 import sys
+from collections import Counter
 
 N = int(sys.stdin.readline())
 arr = []
@@ -12,21 +13,25 @@ for _ in range(N):
     arr.append(int(sys.stdin.readline()))
 arr.sort()
 
-lst = [0] * (max(arr)+1)
 # 산술 평균
-print(sum(arr) // N)
+print(round(sum(arr) / N))
 
 # 중앙값
 print(arr[N // 2])
 
 # 최빈값
-for i in arr:
-    lst[i] += 1
-print(lst.index(max(lst))) # 리스트에서 인덱스를 찾는 함수 'index'
+# for i in arr:
+#     lst[i] += 1
+# print(lst.index(max(lst))) # 리스트에서 인덱스를 찾는 함수 'index'
+arr2 = Counter(arr).most_common() # 최빈값 구하는 Counter
+if len(arr2) > 1 and arr2[0][1] == arr2[1][1]: # 최빈값이 만약 2개인 경우에는
+    print(arr2[1][0]) # 두번째로 작은 수를 출력
+else:
+    print(arr2[0][0])
+
+# arr2를 print 하면 [(숫자, 빈도수), (숫자, 빈도수)] 형태로 나타난다
+# 그래서, 빈도수가 2개 이상인 경우에는 두번째 작은 수를 출력해야 하니
+# arr2[1][0]
 
 # 최댓값과 최솟값의 차이
 print(max(arr) - min(arr))
-
-
-# 최빈값을 구하는 과정에서, 입력받은 숫자들이 모두 양수인 경우는 해결했으나
-# 음수가 들어오는 경우에 대해서 아직 방법을 찾지 못했음.
