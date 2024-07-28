@@ -1,8 +1,10 @@
+import sys
+
 N = int(input())
 my_stack = []
 
 for _ in range(N):
-    order = input().split()
+    order = sys.stdin.readline().split()
     # push 명령인 경우
     if "push" in order:
         my_stack.append(int(order[1]))
@@ -31,5 +33,3 @@ for _ in range(N):
             print(my_stack[-1])
         else:
             print(-1)
-
-# 시간초과
