@@ -1,7 +1,7 @@
 N, M = map(int, input().split())
 
 chess = [input() for _ in range(N)] # 내게 주어진 체스판
-ans = 0
+ans = 1e10 # 최소값 설정 임의값
 
 for i in range(N-7): # 8 * 8 체스판으로 잘라낸 후 확인
     for j in range(M-7): # 체스판의 시작점 for문
@@ -20,7 +20,9 @@ for i in range(N-7): # 8 * 8 체스판으로 잘라낸 후 확인
                         white_recover += 1
                     else:
                         black_recover += 1
-
-        ans = min(white_recover, black_recover)
+        
+        recover = min(white_recover, black_recover)
+        if ans > recover:
+            ans = recover
 
 print(ans)
