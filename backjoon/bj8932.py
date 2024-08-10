@@ -13,4 +13,12 @@ T = int(input())
 
 for _ in range(T):
     score = list(map(int, input().split()))
-    pass
+    a = int(9.23076 * (26.7 - int(score[0])) ** 1.835)
+    b = int(1.84523 * (int(score[1]) - 75) ** 1.348)
+    c = int(56.0211 * (int(score[2]) - 1.5) ** 1.05)
+    d = int(4.99087 * (42.5 - int(score[3])) ** 1.81)
+    e = int(0.188807 * (int(score[4]) - 210) ** 1.41)
+    f = int(15.9803 * (int(score[5]) - 3.8) ** 1.04)
+    g = int(0.11193 * (254 - int(score[6])) ** 1.88)
+
+    print(a+b+c+d+e+f+g)
