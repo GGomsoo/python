@@ -2,7 +2,7 @@ from collections import deque
 
 T = int(input())
 
-# BFS
+# BFS - 정답
 def solution(y, x):
     visited[y][x] = 1
     q = deque([(y, x)])
@@ -21,6 +21,21 @@ def solution(y, x):
                     visited[ny][nx] = 1
                     q.append((ny, nx))
 
+# DFS - 런타임 에러(RecursionError)
+# python 이 정한 재귀 깊이보다 더 깊어서 생긴 문제 - BFS 로 해결해야 한다
+def solution2(y, x):
+    visited[y][x] = 1
+    dx = [0, 1, 0, -1]
+    dy = [-1, 0, 1, 0]
+
+    for z in range(4):
+        nx = x + dx[z]
+        ny = y + dy[z]
+
+        if 0 <= nx < M and 0 <= ny < N:
+            if not visited[ny][nx] and baechu[ny][nx]:
+                solution2(ny, nx)
+
 for _ in range(T):
     M, N, K = map(int, input().split()) # 가로, 세로, 배추 심은 갯수
     baechu = [[0] * M for _ in range(N)] # 배추밭
@@ -34,7 +49,6 @@ for _ in range(T):
     for j in range(N):
         for i in range(M):
             if not visited[j][i] and baechu[j][i]:
-                solution(j, i)
+                solution2(j, i)
                 ans += 1
-    
     print(ans)
