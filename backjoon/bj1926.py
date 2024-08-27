@@ -2,8 +2,8 @@ from collections import deque
 import sys; input = sys.stdin.readline
 
 def solution(j, i):
-    visited[j][i] = 1
-    temp_width = 1
+    visited[j][i] = 1 # 방문체크
+    temp_width = 1 # 임시 넓이. 방문했으니 1로 시작
     q = deque([(j, i)])
 
     while q:
@@ -12,17 +12,17 @@ def solution(j, i):
         dj = [-1, 0, 1, 0]
         di = [0, 1, 0, -1]
 
-        for k in range(4):
+        for k in range(4): # 네방향 탐색
             nj = j + dj[k]
             ni = i + di[k]
 
             if 0 <= nj < N and 0 <= ni < M:
-                if not visited[nj][ni] and paper[nj][ni]:
-                    visited[nj][ni] = 1
-                    temp_width += 1
+                if not visited[nj][ni] and paper[nj][ni]: # 미방문 + 그림이 그려진 칸이라면
+                    visited[nj][ni] = 1 # 방문표시
+                    temp_width += 1 # 넓이 + 1
                     q.append((nj, ni))
                     
-    return temp_width
+    return temp_width # 그림의 크기를 함수의 return 값으로 반환
 
 N, M = map(int, input().split()) # 세로, 가로 크기
 paper = [list(map(int, input().split())) for _ in range(N)] # 도화지
